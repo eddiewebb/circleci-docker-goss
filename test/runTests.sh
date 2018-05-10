@@ -8,7 +8,7 @@ case $1 in
   junit)
     mkdir -p ./reports/goss
     export GOSS_OPTS="$GOSS_OPTS --format junit"
-    dgoss run --entrypoint=/test/gossEntrypoint.sh my-image:test > ./goss/report.xml
+    dgoss run --entrypoint=/test/gossEntrypoint.sh my-image:test > ./reports/goss/report.xml
     ;;
   *)
     dgoss run --entrypoint=/test/gossEntrypoint.sh my-image:test
