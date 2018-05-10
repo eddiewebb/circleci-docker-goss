@@ -7,8 +7,6 @@ file:
     group: root
     filetype: file
     contains: []
-  /schedule.sh:
-    exists: false
 command:
   /test/testEmptyScheduleIgnored.sh:
     exit-status: 1

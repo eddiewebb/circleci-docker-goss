@@ -36,7 +36,7 @@ jobs:
             export GOSS_FILES_STRATEGY=cp
             test/runTests.sh junit
       - store_test_results:
-          path: goss
+          path: reports
 
 
   publish:

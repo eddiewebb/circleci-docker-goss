@@ -6,7 +6,7 @@ export GOSS_OPTS="--max-concurrent=1"
 
 case $1 in
   junit)
-    mkdir ./goss
+    mkdir -p ./reports/goss
     export GOSS_OPTS="$GOSS_OPTS --format junit"
     dgoss run --entrypoint=/test/gossEntrypoint.sh my-image:test > ./goss/report.xml
     ;;
