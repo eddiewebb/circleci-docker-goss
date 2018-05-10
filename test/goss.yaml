@@ -1,0 +1,33 @@
+file:
+  /entrypoint.sh:
+    exists: true
+    mode: "0755"
+    size: 1530
+    owner: root
+    group: root
+    filetype: file
+    contains: []
+  /schedule.sh:
+    exists: false
+command:
+  /test/testEmptyScheduleIgnored.sh:
+    exit-status: 1
+    stdout: []
+    stderr: []
+    timeout: 10000
+  /test/testNonEmptyScheduleModifiesScalerConfig.sh:
+    exit-status: 0
+    stdout:
+    - 'Matching rule - Day: 4, Hour: 14, Type : docker, Count: 5'
+    - Updated docker preallocation count to 5
+    - 'Matching rule - Day: 4, Hour: 14, Type : machine, Count: 5'
+    - Updated machine preallocation count to 5
+    - schedule updated
+    stderr: []
+    timeout: 10000
+  /test/testNonExistentScheduleIgnored.sh:
+    exit-status: 1
+    stdout: []
+    stderr:
+    - 'cat: can''t open ''/schedule.txt'': No such file or directory'
+    timeout: 10000

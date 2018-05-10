@@ -1,0 +1,35 @@
+workflows:
+  version: 2
+  build_test_deploy:
+    jobs:
+      - test
+      - publish:
+          requires:
+            - test
+
+
+jobs:
+  test:
+    docker:
+      - image: circleci/python:2-jessie
+    steps:
+      - checkout
+
+      - setup_remote_docker:   # (2)
+          docker_layer_caching: true # (3)
+
+      - run:
+          name: Test
+          command: |
+            echo "TODO"
+  publish:
+    docker:
+      - image: circleci/python:2-jessie
+    steps:
+      - checkout
+      - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
+      # build the application image
+      - run:
+          name: Docker Builds
+          command: |
+            echo "Building quued version of all images in images.txt"
