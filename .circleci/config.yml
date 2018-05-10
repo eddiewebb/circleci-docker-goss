@@ -21,7 +21,8 @@ jobs:
       - run:
           name: Test
           command: |
-            echo "TODO"
+            test/runTests.sh junit
+            
   publish:
     docker:
       - image: circleci/python:2-jessie
