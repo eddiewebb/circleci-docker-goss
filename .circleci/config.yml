@@ -22,12 +22,15 @@ jobs:
           command: |
             mkdir ~/bin
             export GOSS_DST=~/bin
-            export PATH=$PATH:~/bin
             curl -fsSL https://goss.rocks/install | sh
             goss -version
       - run:
           name: Test
           command: |
+            export PATH=$PATH:~/bin
+            # Important, change from mount to work on remote docker, see https://github.com/aelsabbahy/goss/pull/271
+            # If using machine image you do not need this.
+            export GOSS_FILES_STRATEGY=cp
             test/runTests.sh junit
       - store_test_results:
           path: goss
