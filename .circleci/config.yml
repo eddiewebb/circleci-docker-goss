@@ -20,6 +20,7 @@ jobs:
       - run:
           name: Install goss
           command: |
+            mkdir ~/bin
             export GOSS_DST=~/bin
             export PATH=$PATH:~/bin
             curl -fsSL https://goss.rocks/install | sh
