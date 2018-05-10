@@ -18,18 +18,18 @@ jobs:
       - setup_remote_docker:   # (2)
           docker_layer_caching: true # (3)
       - run:
-        name: Install goss
-        command: |
-          export GOSS_DST=~/bin
-          export PATH=$PATH:~/bin
-          curl -fsSL https://goss.rocks/install | sh
-          goss -version
+          name: Install goss
+          command: |
+            export GOSS_DST=~/bin
+            export PATH=$PATH:~/bin
+            curl -fsSL https://goss.rocks/install | sh
+            goss -version
       - run:
           name: Test
           command: |
             test/runTests.sh junit
       - store_test_results:
-        path: goss
+          path: goss
 
 
   publish:
