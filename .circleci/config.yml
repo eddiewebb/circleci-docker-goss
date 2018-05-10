@@ -22,7 +22,7 @@ jobs:
           command: |
             mkdir ~/bin
             export GOSS_DST=~/bin
-            export GOSS_FILES_STRATEGY=cp
+            export PATH=$PATH:~/bin
             curl -fsSL https://goss.rocks/install | sh
             goss -version
       - run:
