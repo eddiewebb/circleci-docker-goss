@@ -7,7 +7,7 @@ workflows:
           requires:
             - test
 
-
+version: 2
 jobs:
   test:
     docker:
@@ -22,7 +22,7 @@ jobs:
           name: Test
           command: |
             test/runTests.sh junit
-            
+
   publish:
     docker:
       - image: circleci/python:2-jessie
